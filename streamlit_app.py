@@ -1,9 +1,18 @@
 import streamlit as st
+from PIL import Image
 
 st.set_page_config(page_title="Шифратор", page_icon="🔐")
 
 st.title("🔐 Шифратор повідомлень")
 st.write("Виберіть тип коду, введіть текст і натисніть потрібну кнопку.")
+
+st.write("‼️Для кольорового коду при розшифровці вписуйте кожен код ргб через пробіл. Розділові знаки також через пробіл. Зображення з кольоровим кодом знизу.")
+st.write("приклад: 7C7E7D FE2917 0913CD 0913CD B7F0FB , FFC699 B7F0FB E39BE4 0913CD C2D2EB !")
+
+st.write("️️Зверніть увагу❗ Шифр Стенів може розшифровувати не всі символи, але зашифровує всі. ")
+st.write("Ви також можете легко скопіювати виведений код або розшифрований текст натиснувши панель виводу знизу.")
+
+
 
 # Коди
 def get_code_mappings(code_type):
@@ -76,3 +85,7 @@ with col2:
 if output:
     st.text_area("Результат:", output)
     st.code(output, language="text")
+
+
+image = Image.open('colorcode.png') 
+st.image(image, caption='Кольоровий код', use_container_width=True)
